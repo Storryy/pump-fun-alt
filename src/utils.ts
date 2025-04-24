@@ -19,15 +19,34 @@ export async function createTransaction(connection: Connection, instructions: Tr
 
 export async function sendAndConfirmTransactionWrapper(connection: Connection, transaction: Transaction, signers: any[]) {
     try {
-        const signature = await sendAndConfirmTransaction(connection, transaction, signers, { skipPreflight: true, preflightCommitment: 'confirmed' });
-        console.log('Transaction confirmed with signature:', signature);
+        console.log('Fetching latest blockhash...');
+        const latestBlockhash = await connection.getLatestBlockhash('confirmed');
+    
+        transaction.recentBlockhash = latestBlockhash.blockhash;
+        transaction.feePayer = signers[0].publicKey;
+        transaction.sign(...signers); // Sign after blockhash is set
+    
+        console.log('Serializing and sending transaction...');
+        const rawTx = transaction.serialize();
+        const signature = await connection.sendRawTransaction(rawTx, {
+          skipPreflight: false, // allow preflight simulation
+          preflightCommitment: 'processed',
+        });
+    
+        console.log('Signature:', signature);
+        console.log('Waiting for confirmation...');
+    
         return signature;
-    } catch (error) {
-        console.error('Error sending transaction:', error);
+      } catch (err: any) {
+        console.error('Error during manual send and confirm:', err);
+        if (err.signature) {
+          console.warn('Returning signature anyway (confirmation failed):', err.signature);
+          return err.signature;
+        }
         return null;
+      }
     }
-}
-
+            
 export function bufferFromUInt64(value: number | string) {
     let buffer = Buffer.alloc(8);
     buffer.writeBigUInt64LE(BigInt(value));

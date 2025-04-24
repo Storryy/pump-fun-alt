@@ -1,0 +1,12 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.COMPUTE_BUDGET_PROGRAM_ID = exports.MINT_AUTHORITY = exports.MPL_TOKEN_METADATA = exports.PUMP_FUN_ACCOUNT = exports.PUMP_FUN_PROGRAM = exports.RENT = exports.SYSTEM_PROGRAM = exports.GLOBAL = void 0;
+const web3_js_1 = require("@solana/web3.js");
+exports.GLOBAL = new web3_js_1.PublicKey("4wTV1YmiEkRvAtNtsSGPtUrqRYQMe5SKy2uB4Jjaxnjf");
+exports.SYSTEM_PROGRAM = web3_js_1.SystemProgram.programId;
+exports.RENT = web3_js_1.SYSVAR_RENT_PUBKEY;
+exports.PUMP_FUN_PROGRAM = new web3_js_1.PublicKey("6EF8rrecthR5Dkzon8Nwu78hRvfCKubJ14M5uBEwF6P");
+exports.PUMP_FUN_ACCOUNT = new web3_js_1.PublicKey("Ce6TQqeHC9p8KetsN6JsjHK7UTZk7nasjjnr7XxXp9F1");
+exports.MPL_TOKEN_METADATA = new web3_js_1.PublicKey("metaqbxxUerdq28cj1RbAWkYQm3ybzjb6a8bt518x1s");
+exports.MINT_AUTHORITY = new web3_js_1.PublicKey("TSLvdd1pWpHVjahSpsvCXUbgwsL3JAcvokwaKt1eokM");
+exports.COMPUTE_BUDGET_PROGRAM_ID = new web3_js_1.PublicKey("ComputeBudget111111111111111111111111111111");
