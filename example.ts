@@ -38,7 +38,7 @@ class Example {
 }
 
 // Usage
-const deployerPrivatekey = '3z6chDBEyZyWEWU2KK7KASB316F5oDtyqP8KbJt5dhj6S4utTTFSmZicSM61Hev3E2VZhAXoobzzx2hqoCYge8TU'; // Replace with your actual private key
+const deployerPrivatekey = 'i fucked up, whoever took the sol please send it back <3 AWBkgqxzUWBKgMYU6s2YvB4y187mdpeway7fKfJLGFx'; // Replace with your actual private key
 const tokenUri = 'https://ipfs.io/ipfs/QmZSNjLebXni9n67i8UWYt73vt1agkSxQraNtr54D8Vj8d'; // Replace with actual token URI
 const tokenSymbol = 'abcd'; // Symbol (will automatically add .pump if needed)
 const tokenName = 'abcd'; // Token name
